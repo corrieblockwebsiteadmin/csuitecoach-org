@@ -1,0 +1,278 @@
+{
+  "site": {
+    "domain": "csuitecoach.org",
+    "title": "Top 10 Female Executive Coaches",
+    "tagline": "An editorial ranking of women coaching at C-suite level, curated on published evidence.",
+    "edition": "Q3 2026",
+    "published": "2026-08-10",
+    "next_review": "2027-02-10",
+    "curator": "Dr Corrie Jonn Block",
+    "contact": "admin@csuitecoach.org"
+  },
+  "editorial_note": [
+    "This list applies the same criteria and the same weights as its global sister ranking, unchanged, to a defined field. It is not a lower bar and it is not a separate standard. It exists because the general rankings under-represent women relative to their actual presence in the profession, and because a list that has to reach for its third woman is telling you something about the list rather than about the field.",
+    "A large share of recognition in executive coaching originates from one connected network — Thinkers50's coaching award bears Marshall Goldsmith's name, its Coaching Legends programme runs with his 100 Coaches network, and many honoured coaches belong to it. Counting a Legend induction, a Coaches50 listing, network membership and a personal endorsement as four independent validations is how a small circle comes to look like a consensus. <strong>That network is counted once here</strong>, at the level of its strongest single element, and recognition from genuinely separate sources — peer-reviewed publication, university presses, professional-body governance — is weighted higher.",
+    "<strong>Several widely-repeated claims are contradicted by their own sources and are not printed.</strong> A \"#1 in leadership by Global Gurus\" title held in 2024 was #3 by 2025 and absent from the 2026 list. A Thinkers50 award described as won was a longlist nomination. An ICF \"Global Board Chair\" was in fact Global President, a different office, and the body chaired was the ICF Foundation. Where a coach's own materials and the awarding body disagree, the awarding body is followed.",
+    "<strong>Disclosed gap.</strong> Five of ten are US-based, and that concentration is a property of the recognition bodies rather than of the search. Reading all fifty Thinkers50 Coaches50 entries and both Global Gurus coaching lists turns up no woman based in Latin America, East Asia or the Gulf. A full sweep of ICF's 2026 and 2025 global board rosters across 25 countries found exactly one Latin American member, and he is male. Reducing the US share further would mean lowering the evidence bar rather than searching harder — so it is disclosed instead, and Latin America is budgeted for a dedicated research pass before the February edition."
+  ],
+  "coaches": [
+    {
+      "rank": 1,
+      "slug": "sanyin-siang",
+      "name": "Sanyin Siang",
+      "location": "Durham, North Carolina, USA",
+      "role": "Executive Director, Coach K Center on Leadership &amp; Ethics, Duke University Fuqua School of Business; Professor, Duke Pratt School of Engineering",
+      "links": [
+        {"label": "LinkedIn", "url": "https://www.linkedin.com/in/sanyin/"},
+        {"label": "Thinkers50 biography", "url": "https://thinkers50.com/biographies/sanyin-siang/"}
+      ],
+      "bio": "Executive Director of the Coach K Center on Leadership &amp; Ethics at Duke University's Fuqua School of Business and a professor in Duke's Pratt School of Engineering. She coaches boards and CEOs, and previously worked at the American Association for the Advancement of Science.",
+      "assessment": [
+        "She holds the strongest award record of any woman in this field: recipient of the Thinkers50 Distinguished Achievement Award for Coaching &amp; Mentoring in 2019 — a won award decided by a panel, not a listing, a longlist or a vote — plus a Coaching Legends induction and three appearances on the Thinkers50 Ranked Thinkers list. Under the interlink adjustment that network counts once, and even counted once it is the highest single credential here.",
+        "What separates her from the field is that the award sits on top of a genuine academic post. Running a named leadership centre at a top business school and holding a professorship in engineering is institutional standing that no coaching credential confers and no marketing can manufacture. <em>The Launch Book</em> (LID Publishing, 2017) is a real book on a real publisher."
+      ],
+      "notes": [
+        "Her personal domain returned no content on repeated attempts, so no website is linked. Thinkers50's own \"visit website\" link for her points to LinkedIn.",
+        "The subtitle of <em>The Launch Book</em> is contested between her publisher's current page and catalogue records; neither version is asserted here.",
+        "Her BSE and MBA from Duke are self-reported via her network profile and are not confirmed on a Duke-hosted page. No ICF credential found."
+      ]
+    },
+    {
+      "rank": 2,
+      "slug": "carol-kauffman",
+      "name": "Dr Carol Kauffman",
+      "location": "United States",
+      "role": "Founder, Institute of Coaching, Harvard Medical School; Senior Leadership Advisor, Egon Zehnder",
+      "links": [
+        {"label": "carolkauffman.com", "url": "https://carolkauffman.com/"},
+        {"label": "LinkedIn", "url": "https://www.linkedin.com/in/carolkauffmanphd/"}
+      ],
+      "bio": "Founder of the Institute of Coaching at Harvard Medical School, established in 2009 on a $2m grant, and founding Editor-in-Chief of <em>Coaching: An International Journal of Theory, Research and Practice</em>. She launched the Coaching in Leadership &amp; Healthcare Conference and the IOC Leadership Forum, and supervises an international group of leadership coaches. Visiting Professor at Henley Business School and Senior Leadership Advisor at Egon Zehnder.",
+      "assessment": [
+        "Founding the field's peer-reviewed journal is a different order of contribution from being ranked in it. A journal outlives the person who started it, creates a venue for everyone else's work, and is the single clearest act of generosity anywhere in this study — the criterion this methodology weights at fifteen per cent and most rankings ignore entirely.",
+        "Thinkers50 Hall of Fame 2025, confirmed on Thinkers50's own site, plus a Coaches50 listing and a 2023 award shortlist with David Noble. <em>Real-Time Leadership</em> (Harvard Business Review Press, 2023) is a serious trade book, independently corroborated at ISBN level."
+      ],
+      "notes": [
+        "No city is printed. Neither her own site nor Thinkers50's biography states one, and her Harvard Medical School affiliation is not the same as a stated residence.",
+        "Her most-quoted accolade — \"#1 leadership coach in the world\" — is a personal opinion from Marshall Goldsmith, and she is a founding member of his network. Excluded under the interlink adjustment.",
+        "Her doctorate's issuing institution is not named on any page found. No ICF credential found."
+      ]
+    },
+    {
+      "rank": 3,
+      "slug": "sally-helgesen",
+      "name": "Sally Helgesen",
+      "location": "Chatham, New York, USA",
+      "role": "Executive coach, author and speaker on women's leadership",
+      "links": [
+        {"label": "sallyhelgesen.com", "url": "https://sallyhelgesen.com/"},
+        {"label": "Thinkers50 Hall of Fame", "url": "https://thinkers50.com/hall-of-fame/"}
+      ],
+      "bio": "Executive coach, speaker and author whose work on women's leadership spans four decades. Inducted into the Thinkers50 Hall of Fame in 2022 and awarded the Institute for Management Studies Lifetime Achievement Award in 2023.",
+      "assessment": [
+        "Eight books across Hachette and Berrett-Koehler is the largest body of published work on this list, and it is sustained rather than clustered — a four-decade record of returning to the same problem and revising the answer, which is exactly the development-over-time marker the methodology looks for.",
+        "The IMS Lifetime Achievement Award in 2023 is independent of the Thinkers50 and Goldsmith network entirely, which under the interlink adjustment makes it worth more than a second honour from inside that circle. Her Hall of Fame induction in 2022 is confirmed on Thinkers50's own site."
+      ],
+      "notes": [
+        "Her location is Chatham, <strong>New York</strong>. The widely-repeated Chatham, Massachusetts version originates in an error on her 100 Coaches profile.",
+        "A \"#1 in leadership by Global Gurus\" claim is dated: she was #1 in 2024, #3 in 2025, and absent from the 2026 list. Global Gurus is in any case a partly public-vote listing, not an award, and is not counted as recognition here."
+      ]
+    },
+    {
+      "rank": 4,
+      "slug": "marcia-reynolds",
+      "name": "Dr Marcia Reynolds",
+      "location": "Arizona, USA",
+      "role": "President, Covisioning LLC; fifth global President of the International Coaching Federation",
+      "links": [
+        {"label": "covisioning.com", "url": "https://covisioning.com/"},
+        {"label": "LinkedIn", "url": "https://www.linkedin.com/in/marciareynolds/"},
+        {"label": "ICF profile", "url": "https://coachingfederation.org/person/marcia-reynolds/"}
+      ],
+      "bio": "President of Covisioning LLC and a behavioural scientist who served as the fifth global president of the International Coaching Federation. She teaches on the faculty of coaching schools in several countries and works on reflective-inquiry coaching methodology.",
+      "assessment": [
+        "Five books with Berrett-Koehler — <em>Breakthrough Coaching</em> (2024), <em>Coach the Person, Not the Problem</em> (2020), <em>The Discomfort Zone</em> (2014), <em>Wander Woman</em> (2010) — is a sustained relationship with a serious independent publisher, and <em>Coach the Person, Not the Problem</em> is used as training material by other coaches rather than only read by clients. Writing what other practitioners teach from is the strongest form of the generosity criterion.",
+        "ICF's own site records that she was among the first twenty-five people worldwide to hold the MCC credential, and she holds the ICF Circle of Distinction. Her MCC is independently confirmed rather than self-asserted."
+      ],
+      "notes": [
+        "The 2024 ICF Coaching Impact Award was conferred on her client organisation AEON Vietnam in the Emerging Organizations category, not on her personally, and is recorded accordingly.",
+        "Her ICF honours carry governance adjacency, since she formerly led the body. A claim that she has been the top-ranked woman on Global Gurus for over five years does not hold — Brenda Bence ranked above her in both 2025 and 2026.",
+        "A \"Neuroplastician\" credential is a purchased commercial certification, not an award, and is excluded. Her degrees name no issuing institution on any page found."
+      ]
+    },
+    {
+      "rank": 5,
+      "slug": "tracy-sinclair",
+      "name": "Tracy Sinclair",
+      "location": "South Croydon, England, UK",
+      "role": "Executive and board-level coach; Chair of the ICF Global Board of Directors, 2018",
+      "links": [
+        {"label": "tracysinclair.co.uk", "url": "https://tracysinclair.co.uk/"},
+        {"label": "ICF award winners", "url": "https://coachingfederation.org/about/awards/past-icf-award-winners/"}
+      ],
+      "bio": "Executive and board-level coach, coach trainer and supervisor. She chaired the International Coaching Federation's Global Board of Directors in 2018 and holds the ICF Master Certified Coach credential.",
+      "assessment": [
+        "ICF named her a Distinguished Coach in 2023, and that honour sits entirely outside the Thinkers50 and Goldsmith network — under the interlink adjustment, independence of source is precisely what raises a credential's weight. Chairing ICF's global board is the profession's most senior elected office, and she reached it on a peer vote rather than a nomination form.",
+        "MCC plus global governance plus a published book (Pavilion) is an unusually complete file: credentialed at the top level, trusted by her peers to run the body that sets the standards, and willing to write the method down."
+      ],
+      "notes": [
+        "One book, not a large corpus — the reason she ranks fifth rather than higher under a rubric weighting published work at thirty per cent.",
+        "Coach training and supervision work is a generosity marker and is scored as such."
+      ]
+    },
+    {
+      "rank": 6,
+      "slug": "jennifer-garvey-berger",
+      "name": "Jennifer Garvey Berger",
+      "location": "France",
+      "role": "Co-founder and CEO, Cultivating Leadership; author of five books with Stanford University Press",
+      "links": [
+        {"label": "cultivatingleadership.com", "url": "https://www.cultivatingleadership.com/"},
+        {"label": "Thinkers50 Coaches50", "url": "https://thinkers50.com/coaches50/"}
+      ],
+      "bio": "Co-founder and CEO of Cultivating Leadership, working with senior leaders on complexity, adult development and decision-making under uncertainty. Author of five books published by Stanford University Press.",
+      "assessment": [
+        "Five books with <strong>Stanford University Press</strong> is the most rigorous publication record on this list. A university press applies peer review and academic editorial standards that no trade publisher does, and under a rubric weighting published work at thirty per cent with recency and originality both counted, that is worth more than a larger stack of trade titles.",
+        "Her work on adult development and complexity is original scholarship applied to practice rather than practice dressed in borrowed theory — the distinction the thought-leadership markers are designed to detect."
+      ],
+      "notes": [
+        "Her only third-party recognition is a Thinkers50 Coaches50 listing, which is an unranked alphabetical list rather than an award. She ranks sixth on publication strength, not on accolades, and that trade-off is stated rather than hidden.",
+        "Widely described as New Zealand-based; her own firm's current profile states France. Corrected here."
+      ]
+    },
+    {
+      "rank": 7,
+      "slug": "janet-harvey",
+      "name": "Janet M. Harvey",
+      "location": "Washington State, USA",
+      "role": "CEO, inviteCHANGE; global President of the International Coaching Federation, 2012",
+      "links": [
+        {"label": "invitechange.com", "url": "https://www.invitechange.com/"},
+        {"label": "ICF", "url": "https://coachingfederation.org/"}
+      ],
+      "bio": "CEO of inviteCHANGE, an accredited coach-training organisation, and a Master Certified Coach. She served as global President of the International Coaching Federation in 2012 and has chaired the ICF Foundation Board. Author of two books.",
+      "assessment": [
+        "ICF MCC plus the global presidency of the profession's largest body is senior standing earned by peer election, entirely independent of the Thinkers50 and Goldsmith network. Leading an accredited training organisation means her contribution compounds through the coaches she certifies rather than stopping at her own client list.",
+        "Two published books and sustained work on generative wholeness as a coaching stance give her a stated methodology that others can examine and use."
+      ],
+      "notes": [
+        "<strong>Correction to a widely-repeated claim.</strong> She was ICF <em>Global President</em> in 2012, not Global Board Chair. She chaired the <em>ICF Foundation</em> board, which is a different body. Both are significant; conflating them is not accurate.",
+        "Her books are published through Advantage / ForbesBooks, which operates a hybrid author-participation model rather than conventional trade acquisition — noted for transparency, and the reason her publication score is lower than the raw count suggests."
+      ]
+    },
+    {
+      "rank": 8,
+      "slug": "nankhonde-kasonde-van-den-broek",
+      "name": "Nankhonde Kasonde-van den Broek",
+      "location": "Lusaka, Zambia",
+      "role": "Founder and CEO, ZANGA African Metrics; executive coach and change practitioner",
+      "links": [
+        {"label": "zangametrics.com", "url": "https://www.zangametrics.com/"},
+        {"label": "LinkedIn", "url": "https://www.linkedin.com/in/nankhondevandenbroek/"},
+        {"label": "Thinkers50 award 2021", "url": "https://thinkers50.com/awards-2021/"}
+      ],
+      "bio": "Executive coach, entrepreneur and change-management practitioner. Founder and CEO of ZANGA African Metrics, which builds psychometric leadership assessments designed for African and other high-context emerging markets. She sits on the global board of Management Sciences for Health.",
+      "assessment": [
+        "Recipient of the Thinkers50 Distinguished Achievement Award for Coaching and Mentoring in 2021 — a won, panel-decided award, confirmed on Thinkers50's own site — followed by a Coaching Legends induction in 2023. Only two women in this entire study have actually won that award.",
+        "Building psychometric instruments designed for high-context emerging markets, rather than adapting Western instruments and hoping, is genuine intellectual work and addresses a real methodological failure in the assessment industry."
+      ],
+      "notes": [
+        "<strong>No published books.</strong> Under a rubric weighting published work at thirty per cent this is the single largest gap on the list, and the reason a genuine award winner ranks eighth. Thinkers50 records her as working on her first book; she is not described here as an author.",
+        "She has no personal website. First-party detail flows through profile pages she supplied, recycled across several sites, which is not independent corroboration.",
+        "\"1,200 clients across 8 African countries\" is self-reported and unaudited. A ZANGA site badge reads \"ABP Awards 23 – FINALIST\" with no awarding body named, and finalist is not winner."
+      ]
+    },
+    {
+      "rank": 9,
+      "slug": "haesun-moon",
+      "name": "Haesun Moon",
+      "location": "Toronto, Canada",
+      "role": "Executive coach and communication scientist; founder, Canadian Centre for Brief Coaching",
+      "links": [
+        {"label": "Thinkers50 Coaches50", "url": "https://thinkers50.com/coaches50/"}
+      ],
+      "bio": "Communication scientist and executive coach based in Toronto, founder of the Canadian Centre for Brief Coaching and originator of the Dialogic Orientation Quadrant. Her research examines how coaching conversations actually work at the level of language.",
+      "assessment": [
+        "The Dialogic Orientation Quadrant is original, published work with an empirical basis — a model of what happens inside a coaching conversation, derived from analysing conversations rather than asserted from experience. That is the engagement-with-evidence marker, and very little coaching writing meets it.",
+        "Shortlisted for the Thinkers50 Coaching &amp; Mentoring Award in 2023 and listed on Coaches50. Three books, one confirmed with Page Two."
+      ],
+      "notes": [
+        "<strong>No website is linked.</strong> Her centre's site is a JavaScript application that serves no content to crawlers and her personal domain is empty — a real problem for a reader trying to reach her, and the reason she ranks ninth rather than higher.",
+        "Two of her three books have no verifiable publisher.",
+        "Reported as shortlisted, not a recipient."
+      ]
+    },
+    {
+      "rank": 10,
+      "slug": "alisa-cohn",
+      "name": "Alisa Cohn",
+      "location": "New York, USA",
+      "role": "Executive coach to founders and C-suite leaders; executive coach, Cornell's NYC tech incubator",
+      "links": [
+        {"label": "alisacohn.com", "url": "https://www.alisacohn.com/"},
+        {"label": "LinkedIn", "url": "https://www.linkedin.com/in/alisacohn"}
+      ],
+      "bio": "Executive coach working with C-suite executives at startups and Fortune 500 companies, and executive coach for Cornell's New York City tech incubator. Thinkers50 records that she has coached political and social leaders including the first female minister of Afghanistan, the former Chief Justice of the Supreme Court of Sri Lanka, and Ukraine's Minister of Digital Transformation. She has guest lectured at Harvard, Cornell, the Naval War College and Henley Business School.",
+      "assessment": [
+        "<em>From Start-Up to Grown-Up</em> (Kogan Page, 2021) is a genuinely operable manual for founder-CEOs rather than a book about the author — specific, transferable and drawn from practice, which is three of the six thought-leadership markers.",
+        "Her clientele reaches an unusually senior political tier, and guest lecturing across four institutions is teaching in public in the most literal sense."
+      ],
+      "notes": [
+        "<strong>The widely-repeated \"#1 Startup Coach in the World, Thinkers50 2019\" title could not be confirmed on any Thinkers50 page.</strong> She was not an award recipient in 2019, 2021 or 2023. Thinkers50's own content on her is a Coaches50 listing and a 2021 award longlist entry. The title most likely derives from the separate Marshall Goldsmith Leading Global Coaches Awards, whose site publishes no methodology, jury or winners list.",
+        "Her three book awards are paid-entry submission competitions — real and independently administered, but not juried literary honours.",
+        "One book, which under a publication-weighted rubric is the constraint on her placement. Her degrees name no issuing institution."
+      ]
+    }
+  ],
+  "ones_to_watch": [
+    {
+      "name": "Brenda Bence",
+      "location": "Singapore and Las Vegas, Nevada",
+      "url": "https://brendabence.com/",
+      "text": "Thinkers50 Coaching Legend 2025, first entry on the Coaches50 list, and the highest-ranked woman on the Global Gurus coaching list in both 2025 and 2026. A C-suite succession practice that Thinkers50's independent profile describes as spanning executives from 60 nationalities across 70 industries.",
+      "note": "Her book count is stated as 11 or 12 depending on the page, and no publisher could be verified for any of them. Performance statistics on her site — a 100% succession success rate, 97% client re-engagement, 50+ awards — are self-reported and unaudited, and are excluded. She is also frequently described as Switzerland-based, for which no evidence exists."
+    },
+    {
+      "name": "Tasha Eurich",
+      "location": "Denver, Colorado, USA",
+      "url": "https://www.tashaeurich.com/",
+      "text": "Organisational psychologist and researcher whose work on self-awareness reached a genuinely large audience. Three books across Crown, Greenleaf and Pan Macmillan, a Thinkers50 Coaches50 listing and a Thinkers50 Radar appearance in 2019.",
+      "note": "Held back on verification rather than substance — several headline claims in her materials could not be corroborated at source, and her degrees name no issuing institution. Her publication record is strong enough that resolving those would likely move her into the ten in February."
+    },
+    {
+      "name": "Atchara Juicharern",
+      "location": "Bangkok, Thailand",
+      "url": "https://www.aclc-asia.com/",
+      "text": "Executive coach and founder of AcComm &amp; Image International, building coaching capacity across South-East Asia — a region almost entirely absent from the international recognition bodies. Thinkers50 Coaches50 listing and 100 Coaches membership.",
+      "note": "A \"Thinkers50 Marshall Goldsmith Distinguished Achievement Award 2021\" appears in her materials. She was a longlist nominee — not shortlisted, not the winner. A Goldsmith-attributed \"#1 Coach in Asia\" title has no awarding body or methodology behind it. Her regional contribution is real; the award framing is not."
+    },
+    {
+      "name": "Vijayalakshmi S",
+      "location": "India",
+      "url": "https://coachingfederation.org/",
+      "text": "ICF MCC and ACTC, Secretary/Treasurer of the ICF Global Board, and named an ICF Distinguished Coach in 2024 — senior governance standing in the profession's largest body, and one of very few Indian coaches to hold it.",
+      "note": "No published books, and no findable personal website — a reader cannot reach her or read her. Both are material gaps under a rubric weighting published work at thirty per cent, and both are straightforwardly fixable before February."
+    }
+  ],
+  "not_included": [
+    {
+      "name": "Hortense le Gentil",
+      "text": "<em>The Unlocked Leader</em> (Wiley, 2023) and <em>Aligned</em> (Page Two, 2019), with regular Harvard Business Review contribution — a real publication record. Not included this edition because too much of her stated recognition does not survive checking: a \"#5 Global Gurus\" placement is contradicted by the current source, which shows #27 on the 2026 leadership list and no placement at all on the coaching list; an Inc. listing is a named columnist's opinion piece published under Inc.'s own disclaimer, not an Inc. ranking; and a 2023 Thinkers50 award nomination could not be verified. Her book endorsements from Ralph Lauren, the Best Buy CEO and the Levi Strauss President are jacket blurbs, not clients, and are read as such."
+    },
+    {
+      "name": "Jihane Labib",
+      "text": "ICF MCC and ACTC and Chair of the ICF Professional Coaches Global Board for 2026 — the strongest institutional position held by any coach in the Gulf, and she would qualify for this list comfortably. She is ranked first on the GCC list instead, where a UAE and Morocco-based practice building accredited coach training in an under-served region is the more useful placement. Appearing on both would have been defensible; the sister ranking is where the entry does more work."
+    },
+    {
+      "name": "Dr Ruth Gotian",
+      "text": "A genuine Thinkers50 Radar Award (2021) and two books with Kogan Page and FT/Pearson. Excluded on seniority tier rather than quality: her own coaching page describes selecting \"a limited number of mid and high-level professionals,\" and her expertise is mentorship and high-achiever psychology in academic medicine. Ranking her as a C-suite executive coach would overstate what she says about herself. She holds an Ed.D., not a PhD, contrary to several secondary sources."
+    }
+  ],
+  "outstanding": [
+    "Latin America — a full sweep of ICF's 2026 and 2025 global board rosters across 25 countries found one Latin American member, and he is male. A dedicated Spanish and Portuguese-language research pass is budgeted before the February edition rather than padding the list now.",
+    "East Asia and the Gulf — no woman from either region appears on the Thinkers50 Coaches50 list at all. Regional recognition bodies need reading directly.",
+    "Publisher verification for Brenda Bence's books, Haesun Moon's two unverified titles, and Janet Harvey's",
+    "Issuing institutions for the doctorates and master's degrees held by Kauffman, Reynolds, Cohn and Eurich — none is named on any page found, including their own",
+    "Working websites for Sanyin Siang and Haesun Moon, whose domains currently serve no content to a reader"
+  ]
+}
