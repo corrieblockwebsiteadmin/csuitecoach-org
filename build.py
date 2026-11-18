@@ -28,6 +28,8 @@ WEBSITE_ID = BASE + "/#website"
 RANKING_ID = BASE + "/#ranking"
 CURATOR_ID = BASE + "/curator.html#curator"
 CURATOR_SITE = "https://www.corrieblock.com"
+# His LinkedIn, as corrieblock.com/verify/ lists it among the accounts he controls.
+CURATOR_LINKEDIN = "https://www.linkedin.com/in/corrieblock"
 
 # Stands in for a page's last-modified date until main() knows it.
 LASTMOD = "__LASTMOD__"
@@ -89,7 +91,7 @@ def curator_node():
             "url": BASE + "/curator.html",
             "jobTitle": "Curator, " + S["title"],
             "description": "Owns, curates and publishes this ranking. He is not ranked on it.",
-            "sameAs": [CURATOR_SITE]}
+            "sameAs": [CURATOR_SITE, CURATOR_LINKEDIN]}
 
 
 def breadcrumb(name, url):
@@ -484,6 +486,10 @@ def llms_txt():
         % (plain(fill(P["curator"]["h1"])), BASE),
         "- [%s](%s/nominate.html): how to nominate a coach for the next quarterly review; "
         "no payment is involved at any stage." % (plain(fill(P["nominate"]["h1"])), BASE),
+        "",
+        "## Contact",
+        "",
+        "- Corrections, removal and editorial correspondence: %s" % S["contact"],
         "",
         "## Ranked coaches",
         "",
