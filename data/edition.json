@@ -9,6 +9,184 @@
     "curator": "Dr Corrie Jonn Block",
     "contact": "admin@csuitecoach.org"
   },
+  "pages": {
+    "about": {
+      "h1": "About this ranking: how the ten women are assessed",
+      "blocks": [
+        {
+          "meta": "The rubric below is the one every entry on this list of women executive coaches is assessed against. Printing it in full lets any coach, listed here or not, check the reasoning."
+        },
+        {
+          "h2": "What this list of women coaches is"
+        },
+        {
+          "p": "{title} is an editorial ranking of women coaching at C-suite level. A named individual curates it, and it is assembled from public information. No coach pays to be placed on it, none is charged for inclusion, and none is contacted for approval before it is published."
+        },
+        {
+          "p": "It does not ask which women are best known. It asks which have visibly advanced the practice and taught it openly."
+        },
+        {
+          "h2": "The five criteria and their weights"
+        },
+        {
+          "insert": "weights"
+        },
+        {
+          "small": "The scores are editorial judgements made against published evidence. They are not a computed index: the weights show where the emphasis falls, not a sum that ranks anyone automatically, and presenting them as one would be false precision."
+        },
+        {
+          "h2": "Reading the work, not counting it"
+        },
+        {
+          "p": "For the teaching criterion, three to five recent pieces by each candidate are read against the six markers below, and the score rests on the best three published in the last 24 months. Those pieces are cited in each woman's entry, so a reader can check the judgement instead of taking it on trust."
+        },
+        {
+          "insert": "markers"
+        },
+        {
+          "h2": "Counting one network once"
+        },
+        {
+          "p": "Much of the recognition in executive coaching comes from a single connected network. Thinkers50 runs its Coaching Legends programme in partnership with Marshall Goldsmith's 100 Coaches, its coaching award carries Goldsmith's name, and a large proportion of the coaches it honours are 100 Coaches members."
+        },
+        {
+          "p": "A Legend induction, a Coaches50 listing, membership of 100 Coaches and an endorsement from Goldsmith are therefore not four independent validations, and treating them as four would overstate independence considerably. <strong>Recognition from that network counts here as one signal, at the level of its strongest single element.</strong> Recognition from sources that really are separate, such as peer-reviewed publication, a university appointment, professional-body governance or national press, is counted separately and weighted higher because it is independent."
+        },
+        {
+          "p": "The curator is held to this rule as much as anyone on the list."
+        },
+        {
+          "h2": "Paid platforms and what they cannot prove"
+        },
+        {
+          "p": "<strong>A paid platform does not lower the score of the writing on it. It removes the platform as evidence of recognition.</strong> Where a piece appears says nothing about the quality of its thinking, and good work is routinely published on fee-paying platforms. What such a platform cannot do is stand in for independent judgement, because no one independent chose the piece."
+        },
+        {
+          "ul": [
+            "<strong>Council and expert-panel memberships</strong> are paid for. Anything a coach publishes through one is read and scored on its merits, like any other writing, but the membership is never counted as recognition.",
+            "<strong>Global Gurus</strong> gives public website voting a 30% weight in its own published methodology, takes open self-nomination and is funded by advertisers. A place on it is cited as a placement on a listing partly decided by public vote, and never as an award.",
+            "<strong>Paid directory listings, sponsored profiles and awards that charge an entry fee</strong> are left out of the recognition score altogether."
+          ]
+        },
+        {
+          "p": "Some things count for nothing at all: follower numbers, superlatives a coach applies to herself unless they can be attributed to a named third party, client logos shown without public disclosure of the engagement, and any claim that cannot be traced to a source that can be cited."
+        },
+        {
+          "h2": "What generosity means here"
+        },
+        {
+          "p": "Left undefined, generosity would come down to taste, so it is scored on these observable proxies:"
+        },
+        {
+          "insert": "generosity"
+        },
+        {
+          "h2": "How each claim is checked"
+        },
+        {
+          "ul": [
+            "Each factual claim on this site traces to a public source that can be cited, and the date it was accessed is logged.",
+            "A credential is described as published, not as verified, unless it has been checked with the body that issued it. ICF's register carries its own disclaimer that it does not verify the qualifications listed, so entries say “as published by” rather than imply that a registry was checked.",
+            "A claim that cannot be sourced is left out. Nothing is estimated or inferred to fill the gap.",
+            "Every superlative is attributed, in the text, to whoever made it.",
+            "A client is named only where the client or the coach has disclosed the engagement publicly."
+          ]
+        },
+        {
+          "h2": "Corrections and removal"
+        },
+        {
+          "p": "Corrections backed by evidence are made on request and logged. Any woman listed here who asks to be removed is removed promptly, without argument. Write to <a href=\"mailto:{contact}\">{contact}</a>."
+        },
+        {
+          "p": "No coach pays for a place on this list. If that ever changed, every entry affected would be labelled as advertising, and this methodology would be void."
+        },
+        {
+          "h2": "When the list changes"
+        },
+        {
+          "p": "This site is reviewed quarterly. The three rankings in the network, this one, the GCC list at <a href=\"https://coachcxo.com/\">coachcxo.com</a> and the global list at <a href=\"https://cxocoaches.com/\">cxocoaches.com</a>, are staggered so that one is updated each month. Each therefore moves on a genuine quarterly cycle of its own, rather than all three changing together. Movement should be small, one or two positions on the evidence; a ranking in which most names change every quarter is not a ranking."
+        },
+        {
+          "p": "At every review, each live claim is verified again, sources and access dates are refreshed, the nomination queue is read against these criteria, and a dated changelog records what moved and why."
+        }
+      ]
+    },
+    "curator": {
+      "h1": "The curator",
+      "blocks": [
+        {
+          "meta": "Who owns this site, who decides which women are ranked on it, and on what basis, disclosed in full."
+        },
+        {
+          "h2": "{curator}"
+        },
+        {
+          "p": "{curator} curates and publishes {title} and owns this site. He is an academic and a practising executive coach. Which women are ranked, and in what order, is his editorial judgement, applied against the <a href=\"/about.html\">published methodology</a> and drawn from public sources."
+        },
+        {
+          "h2": "Disclosure"
+        },
+        {
+          "ul": [
+            "He owns this domain and the network's two sister rankings: <a href=\"https://coachcxo.com/\">coachcxo.com</a>, which ranks executive coaches practising in the Gulf, and <a href=\"https://cxocoaches.com/\">cxocoaches.com</a>, the global list.",
+            "He is not ranked on this list or on either of the others. The person deciding the list is not on the list.",
+            "No coach pays to be placed here. None is charged for inclusion, and none is contacted for approval before publication.",
+            "As a practising executive coach himself, he competes with several of the women ranked here. That is exactly why the methodology, the weighting and every exclusion are published in full: so that the reasoning can be checked, not trusted.",
+            "The interlink adjustment set out in the methodology applies to him on the same terms as to every woman listed."
+          ]
+        },
+        {
+          "h2": "Why an academic runs this ranking"
+        },
+        {
+          "p": "Executive coaching faces sustained pressure, most of it fair, over its lack of an evidence base. Rankings in the field have tended to repeat the problem, recycling the same self-reported accolades, treating paid placements as honours and repeating superlatives that no one can source."
+        },
+        {
+          "p": "This list does the opposite. It weights published and peer-reviewed work, reads what each woman has written instead of counting it, discounts recognition that turns out to be one network validating itself, and prints what it could not verify."
+        },
+        {
+          "h2": "His own site"
+        },
+        {
+          "p": "<a href=\"https://www.corrieblock.com/\" rel=\"noopener\">corrieblock.com</a>"
+        },
+        {
+          "h2": "Contact"
+        },
+        {
+          "p": "For corrections, requests to be removed and other editorial correspondence, write to <a href=\"mailto:{contact}\">{contact}</a>."
+        }
+      ]
+    },
+    "nominate": {
+      "h1": "Nominate a woman coaching at C-suite level",
+      "blocks": [
+        {
+          "meta": "Each nomination is read against the <a href=\"/about.html\">published rubric</a> at the quarterly review. You may put yourself forward or nominate another woman who coaches at this level. A place is never guaranteed, and no payment is involved at any stage."
+        },
+        {
+          "p": "The nominations that carry most weight point to specific published work, such as a paper, an essay, a talk or a framework she has given away, rather than to a list of accolades. Tell us what she wrote and why it was good."
+        },
+        {
+          "insert": "form"
+        },
+        {
+          "h2": "After you submit"
+        },
+        {
+          "ul": [
+            "Your nomination will be read and assessed against the published rubric at the next quarterly review.",
+            "It is kept for the current review cycle and the one after, then deleted.",
+            "The nominee's details are used editorially. If you nominate someone other than yourself, she is not added to any mailing list, because no one can give marketing permission on another person's behalf. If she is listed, she receives one editorial email saying so, with its own opt-in link should she want to hear more.",
+            "Submitting records your nomination in our mailing system so that we can reply to you about it. That is editorial correspondence, not marketing.",
+            "You can withdraw your nomination at any time by writing to <a href=\"mailto:{contact}\">{contact}</a>.",
+            "Nominations are not published. A woman who reaches the list appears in the ranking or among the Ones to Watch; anyone who does not is not named."
+          ]
+        }
+      ]
+    }
+  },
   "editorial_note": [
     "This list applies the same criteria and the same weights as its global sister ranking, unchanged, to a defined field. It is not a lower bar and it is not a separate standard. It exists because the general rankings under-represent women relative to their actual presence in the profession, and because a list that has to reach for its third woman is telling you something about the list rather than about the field.",
     "A large share of recognition in executive coaching originates from one connected network — Thinkers50's coaching award bears Marshall Goldsmith's name, its Coaching Legends programme runs with his 100 Coaches network, and many honoured coaches belong to it. Counting a Legend induction, a Coaches50 listing, network membership and a personal endorsement as four independent validations is how a small circle comes to look like a consensus. <strong>That network is counted once here</strong>, at the level of its strongest single element, and recognition from genuinely separate sources — peer-reviewed publication, university presses, professional-body governance — is weighted higher.",
@@ -107,7 +285,7 @@
       "location": "South Croydon, England, UK",
       "role": "Executive and board-level coach; Chair of the ICF Global Board of Directors, 2018",
       "links": [
-        {"label": "tracysinclair.co.uk", "url": "https://tracysinclair.co.uk/"},
+        {"label": "ICF profile", "url": "https://coachingfederation.org/person/tracy-sinclair-mcc-united-kingdom/"},
         {"label": "ICF award winners", "url": "https://coachingfederation.org/about/awards/past-icf-award-winners/"}
       ],
       "bio": "Executive and board-level coach, coach trainer and supervisor. She chaired the International Coaching Federation's Global Board of Directors in 2018 and holds the ICF Master Certified Coach credential.",

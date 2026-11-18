@@ -1,15 +1,36 @@
 #!/usr/bin/env python3
-"""Static site generator for cxocoaches.com (Coach Index Network).
+"""Static site generator for one ranking in the Coach Index Network.
+
+The same generator builds all three sites; everything that differs between
+them lives in data/edition.json:
+  site      - name, domain, edition dates, curator, contact
+  pages     - the wording of the methodology, curator and nominate pages,
+              written for this site's own list
+  coaches, ones_to_watch, not_included, outstanding - the ranking itself
 
 Quarterly refresh = edit data/edition.json and re-run. No HTML is hand-edited.
+Each run also updates data/lastmod.json, which keeps each page's sitemap
+date: a page keeps its date until its content changes. Commit that file
+with the data.
 """
-import json, os, shutil, html, datetime
+import json, os, re, shutil, html, hashlib, datetime
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DATA = json.load(open(os.path.join(ROOT, "data", "edition.json"), encoding="utf-8"))
 OUT = os.path.join(ROOT, "docs")
 S = DATA["site"]
+P = DATA["pages"]
 BASE = "https://" + S["domain"]
+
+# Structured-data identities shared by every page. The curator is the
+# publisher of the site; he is never one of the ranked coaches.
+WEBSITE_ID = BASE + "/#website"
+RANKING_ID = BASE + "/#ranking"
+CURATOR_ID = BASE + "/curator.html#curator"
+CURATOR_SITE = "https://www.corrieblock.com"
+
+# Stands in for a page's last-modified date until main() knows it.
+LASTMOD = "__LASTMOD__"
 
 NAV = [("/", "The Ranking"), ("/about.html", "Methodology"),
        ("/curator.html", "Curator"), ("/nominate.html", "Nominate")]
@@ -17,6 +38,17 @@ NAV = [("/", "The Ranking"), ("/about.html", "Methodology"),
 
 def esc(t):
     return html.escape(t, quote=True)
+
+
+def plain(t):
+    """Text without tags or entities, for llms.txt."""
+    return html.unescape(re.sub(r"<[^>]+>", "", t))
+
+
+def fill(t):
+    """Site values inside the page wording held in data/edition.json."""
+    return (t.replace("{curator}", esc(S["curator"])).replace("{contact}", S["contact"])
+             .replace("{domain}", S["domain"]).replace("{title}", esc(S["title"])))
 
 
 def initials(name):
@@ -46,15 +78,40 @@ def avatar(c, size="md"):
             % (size, esc(c["name"]), esc(initials(c["name"]))))
 
 
-def page(slug, title, desc, body, schema=None, canonical=None, wide=False):
+def website_node():
+    return {"@type": "WebSite", "@id": WEBSITE_ID, "name": S["title"], "url": BASE + "/",
+            "description": S["tagline"], "inLanguage": "en",
+            "publisher": {"@id": CURATOR_ID}}
+
+
+def curator_node():
+    return {"@type": "Person", "@id": CURATOR_ID, "name": S["curator"],
+            "url": BASE + "/curator.html",
+            "jobTitle": "Curator, " + S["title"],
+            "description": "Owns, curates and publishes this ranking. He is not ranked on it.",
+            "sameAs": [CURATOR_SITE]}
+
+
+def breadcrumb(name, url):
+    return {"@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": S["title"], "item": BASE + "/"},
+        {"@type": "ListItem", "position": 2, "name": name, "item": url}]}
+
+
+def page(slug, title, desc, body, nodes=(), canonical=None, wide=False, home=False):
+    """One page. Every page carries one JSON-LD block: an @graph naming the
+    site and its curator, plus the page's own nodes. The site's name sits in
+    the header; it is the H1 on the home page only, and every other page
+    brings its own H1."""
     nav = "".join('<a href="%s">%s</a>' % (h, l) for h, l in NAV)
-    sch = ""
-    if schema:
-        sch = '<script type="application/ld+json">%s</script>' % json.dumps(
-            schema, ensure_ascii=False, indent=None)
+    schema = {"@context": "https://schema.org",
+              "@graph": [website_node(), curator_node()] + list(nodes)}
+    sch = '<script type="application/ld+json">%s</script>' % json.dumps(
+        schema, ensure_ascii=False, indent=None).replace("</", "<\\/")
     can = canonical or (BASE + ("/" if slug == "index" else "/" + slug + ".html"))
     depth = "../" if "/" in slug else ""
     wrapmod = " wrap--wide" if wide else ""
+    tag = "h1" if home else "p"
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -74,7 +131,7 @@ def page(slug, title, desc, body, schema=None, canonical=None, wide=False):
 <div class="wrap{wrapmod}">
 <header class="site">
   <div class="masthead"><a href="/">{esc(S['domain'])}</a></div>
-  <h1>{esc(S['title'])}</h1>
+  <{tag} class="site-title">{esc(S['title'])}</{tag}>
   <p class="tagline">{esc(S['tagline'])}</p>
   <nav class="site">{nav}</nav>
 </header>
@@ -97,7 +154,7 @@ def page(slug, title, desc, body, schema=None, canonical=None, wide=False):
 
 
 def person_schema(c):
-    d = {"@context": "https://schema.org", "@type": "Person", "name": c["name"],
+    d = {"@type": "Person", "name": c["name"],
          "jobTitle": "Executive Coach", "description": c["bio"],
          "url": BASE + "/coaches/" + c["slug"] + ".html"}
     same = [l["url"] for l in c["links"]]
@@ -166,11 +223,14 @@ def build_index():
                  'not a lower tier of it.</p>')
     parts.append('<div class="cards">')
     for w in DATA["ones_to_watch"]:
+        # A name is linked only while there is a working page to link to.
+        name = (('<a href="%s" rel="noopener">%s</a>' % (w["url"], esc(w["name"])))
+                if w.get("url") else esc(w["name"]))
         parts.append(f"""<div class="card">
   <div class="top">
     {avatar(w, "sm")}
     <div>
-      <h3><a href="{w['url']}" rel="noopener">{esc(w['name'])}</a></h3>
+      <h3>{name}</h3>
       <p class="where">{esc(w['location'])}</p>
     </div>
   </div>
@@ -194,16 +254,18 @@ def build_index():
         parts.append("<li>%s</li>" % esc(o))
     parts.append("</ul>")
 
-    schema = {"@context": "https://schema.org", "@type": "ItemList",
-              "name": S["title"], "description": S["tagline"],
-              "numberOfItems": len(DATA["coaches"]),
-              "itemListOrder": "https://schema.org/ItemListOrderDescending",
-              "itemListElement": [
-                  {"@type": "ListItem", "position": c["rank"],
-                   "url": BASE + "/coaches/" + c["slug"] + ".html",
-                   "item": person_schema(c)} for c in DATA["coaches"]]}
+    ranking = {"@type": "ItemList", "@id": RANKING_ID,
+               "name": S["title"], "description": S["tagline"], "url": BASE + "/",
+               "author": {"@id": CURATOR_ID}, "publisher": {"@id": CURATOR_ID},
+               "isPartOf": {"@id": WEBSITE_ID},
+               "numberOfItems": len(DATA["coaches"]),
+               "itemListOrder": "https://schema.org/ItemListOrderDescending",
+               "itemListElement": [
+                   {"@type": "ListItem", "position": c["rank"],
+                    "url": BASE + "/coaches/" + c["slug"] + ".html",
+                    "item": person_schema(c)} for c in DATA["coaches"]]}
     return page("index", S["title"] + " — " + S["edition"], S["tagline"],
-                "\n".join(parts), schema, canonical=BASE + "/", wide=True)
+                "\n".join(parts), [ranking], canonical=BASE + "/", wide=True, home=True)
 
 
 def build_coach(c):
@@ -213,7 +275,7 @@ def build_coach(c):
             f'<a href="/">{esc(S["title"])}</a>. Assessed against the '
             f'<a href="/about.html">published methodology</a>.</div>',
             f'<div class="profile-head">{avatar(c, "lg")}<div>'
-            f"<h2>{esc(c['name'])}</h2>"
+            f"<h1>{esc(c['name'])}</h1>"
             f'<p class="where">{esc(c["location"])}</p></div></div>',
             f'<p class="role">{c["role"]}</p>',
             f"<p>{c['bio']}</p>",
@@ -231,12 +293,14 @@ def build_coach(c):
                 'without contacting the subject. If anything here is inaccurate, write to '
                 f'<a href="mailto:{S["contact"]}">{S["contact"]}</a> and it will be corrected or removed.</p>')
 
-    schema = {"@context": "https://schema.org", "@type": "ProfilePage",
-              "mainEntity": person_schema(c),
-              "isPartOf": {"@type": "WebSite", "name": S["title"], "url": BASE + "/"}}
+    url = BASE + "/coaches/" + c["slug"] + ".html"
+    profile = {"@type": "ProfilePage", "url": url,
+               "mainEntity": person_schema(c),
+               "isPartOf": {"@id": WEBSITE_ID},
+               "publisher": {"@id": CURATOR_ID}}
     return page("coaches/" + c["slug"], c["name"] + " — " + S["title"],
                 "%s. Ranked #%d in the %s edition." % (c["name"], c["rank"], S["edition"]),
-                "\n".join(body), schema)
+                "\n".join(body), [profile, breadcrumb(c["name"], url)])
 
 
 ABOUT_ROWS = [
@@ -283,157 +347,10 @@ GENEROSITY = [
 ]
 
 
-def build_about():
-    rows = "".join('<tr><td class="w">%s</td><td><strong>%s</strong><br>%s</td></tr>' % r
-                   for r in ABOUT_ROWS)
-    markers = "".join("<li><strong>%s.</strong> %s</li>" % m for m in MARKERS)
-    gen = "".join("<li>%s</li>" % g for g in GENEROSITY)
-    body = f"""
-<div class="meta">This is the rubric every entry on this site is assessed against. It is published in
-full so that any coach listed — or not listed — can check the reasoning.</div>
-
-<h2>What this ranking is</h2>
-<p>An editorial ranking of executive coaches, curated by a named individual and assembled from public
-information. No coach pays for placement, no coach is charged for inclusion, and no coach is contacted
-for approval before publication.</p>
-<p>The question this list answers is not who is best known. It is who has visibly advanced the practice
-and taught it openly.</p>
-
-<h2>Weighting</h2>
-<table><thead><tr><th>Weight</th><th>Criterion</th></tr></thead><tbody>{rows}</tbody></table>
-<p class="small">Scores are editorial judgements against published evidence, not a computed index. The
-weights describe emphasis; they are not arithmetic that produces a rank automatically. Claiming
-otherwise would be false precision.</p>
-
-<h2>How thought leadership is assessed</h2>
-<p>The teaching score is applied by reading three to five recent pieces per candidate against six
-markers, and scoring on the best three published in the last 24 months. The specific pieces are cited
-in the entry so a reader can check the judgement rather than take it.</p>
-<ul class="caveats">{markers}</ul>
-
-<h2>The interlink adjustment</h2>
-<p>A significant share of executive-coaching recognition originates from one connected network.
-Thinkers50 Coaching Legends runs in partnership with Marshall Goldsmith's 100 Coaches; the Thinkers50
-coaching award carries Goldsmith's name; a large proportion of honoured coaches are 100 Coaches members.</p>
-<p>Treating a Legend induction, a Coaches50 listing, 100 Coaches membership and a Goldsmith endorsement
-as four independent validations would overstate independence considerably. <strong>Recognition
-originating from that network is therefore counted as one signal, at the level of its strongest single
-element.</strong> Recognition from genuinely separate sources — peer-reviewed publication, university
-appointment, professional-body governance, national press — is counted separately and weighted higher
-for that independence.</p>
-<p>This applies to the curator as much as to anyone listed.</p>
-
-<h2>What is discounted, and why</h2>
-<p><strong>Paid platforms do not discount the writing. They disqualify the platform as evidence of
-recognition.</strong> Publishing on a fee-paying platform says nothing about the quality of the thought;
-good work appears there routinely. What it cannot do is stand in for independent judgement, because
-nobody independent selected it.</p>
-<ul class="caveats">
-<li><strong>Council and expert-panel memberships</strong> are fee-paying. Posts published there are read
-and scored on their merits like any other writing. The membership itself is never counted as recognition.</li>
-<li><strong>Global Gurus</strong> weights public website voting at 30% of its own published methodology,
-accepts open self-nomination, and is advertiser-funded. Cited as a placement on a partly public-vote
-listing — never as an award.</li>
-<li><strong>Paid directory listings, sponsored profiles and awards with entry fees</strong> are excluded
-from the recognition score entirely.</li>
-</ul>
-<p>Not counted at all: follower counts, self-declared superlatives unless attributable to a named third
-party, client logos without public disclosure, and any claim that cannot be traced to a citable source.</p>
-
-<h2>Generosity, defined so it can be checked</h2>
-<p>Otherwise this would be a matter of taste. These are the observable proxies:</p>
-<ul class="caveats">{gen}</ul>
-
-<h2>Verification standard</h2>
-<ul class="caveats">
-<li>Every factual claim traces to a citable public source, logged with an access date.</li>
-<li>Credentials are described as published, not as verified, unless checked against the issuing body.
-The ICF register carries its own disclaimer that listed qualifications are not verified by ICF, so
-entries read “as published by” rather than implying a registry check.</li>
-<li>Where a claim cannot be sourced it is omitted. Nothing is estimated or inferred to fill a gap.</li>
-<li>Superlatives are attributed inline to whoever made them.</li>
-<li>No client is named unless the client or the coach has publicly disclosed the engagement.</li>
-</ul>
-
-<h2>Corrections, removal and independence</h2>
-<p>Evidenced corrections are made on request and logged. Any listed coach who asks to be removed is
-removed promptly and without argument. Write to
-<a href="mailto:{S['contact']}">{S['contact']}</a>.</p>
-<p>No coach pays for placement. If that ever changes, every affected entry will be labelled as
-advertising and this methodology is void.</p>
-
-<h2>Update cadence</h2>
-<p>This site is reviewed quarterly. The three properties in this network are staggered so that one
-updates each month, which means each list moves on a genuine quarterly cycle rather than all three
-changing on the same day. Movement is expected to be small — one or two positions on evidence. A
-ranking where most names change every quarter is not a ranking.</p>
-<p>Each cycle re-verifies every live claim, refreshes sources and access dates, processes the nomination
-queue against these criteria, and publishes a dated changelog stating what moved and why.</p>
-"""
-    return page("about", "Methodology — " + S["title"],
-                "The published rubric, weighting and verification standard behind the ranking.",
-                body,
-                {"@context": "https://schema.org", "@type": "Article",
-                 "headline": "Selection methodology",
-                 "author": {"@type": "Person", "name": S["curator"]},
-                 "datePublished": S["published"], "isPartOf": BASE + "/"})
-
-
-def build_curator():
-    body = f"""
-<div class="meta">Full disclosure of who owns this site, who decides the ranking, and on what basis.</div>
-
-<h2>{esc(S['curator'])}</h2>
-<p>This site is owned and curated by {esc(S['curator'])}, an academic and practising executive coach.
-The rankings are his editorial judgement, applied against the
-<a href="/about.html">published methodology</a> and assembled from public sources.</p>
-
-<h2>Disclosure</h2>
-<ul class="caveats">
-<li>{esc(S['curator'])} owns this domain and the two sister rankings in this network.</li>
-<li>He does not appear as a ranked entry on any of them. The person deciding the list is not on the list.</li>
-<li>No coach pays for placement, and no coach is charged for inclusion or contacted for approval before publication.</li>
-<li>He is himself a practising executive coach, and therefore a competitor of several people ranked here.
-That is precisely why the methodology, the weighting and every exclusion are published in full: so the
-reasoning can be checked rather than trusted.</li>
-<li>The interlink adjustment described in the methodology applies to him on the same terms as to anyone listed.</li>
-</ul>
-
-<h2>Why an academic runs this</h2>
-<p>Executive coaching is under sustained and largely fair pressure for lacking an evidence base. Rankings
-in the field have tended to reproduce that problem — recycling the same self-reported accolades, treating
-paid placements as honours, and repeating superlatives no one can source.</p>
-<p>This ranking takes the opposite approach. It weights published and peer-reviewed work, it reads the
-writing rather than counting it, it discounts recognition that turns out to be one network validating
-itself, and it prints what it could not verify.</p>
-
-<h2>Elsewhere</h2>
-<p><a href="https://corrieblock.com" rel="noopener">corrieblock.com</a></p>
-
-<h2>Contact</h2>
-<p>Corrections, removal requests and editorial correspondence:
-<a href="mailto:{S['contact']}">{S['contact']}</a>.</p>
-"""
-    return page("curator", "Curator — " + S["title"],
-                "Who owns and curates this ranking, and on what basis.", body,
-                {"@context": "https://schema.org", "@type": "ProfilePage",
-                 "mainEntity": {"@type": "Person", "name": S["curator"],
-                                "jobTitle": "Executive coach and academic",
-                                "url": BASE + "/curator.html",
-                                "sameAs": ["https://corrieblock.com"]}})
-
-
-def build_nominate():
-    body = f"""
-<div class="meta">Nominations are read against the <a href="/about.html">published rubric</a> at each
-quarterly review. You may nominate yourself or someone else. Inclusion is never guaranteed, and no
-payment is involved at any stage.</div>
-
-<h2>Nominate a coach</h2>
-<p>The strongest nominations point at specific published work — a paper, an essay, a talk, a framework
-someone has given away — rather than a list of accolades. Tell us what they wrote and why it was good.</p>
-
-<div class="formwrap">
+def nomination_form():
+    # Posts to the same Kit form as before. Kit records every submission as a
+    # subscriber; there is no marketing opt-in on this form.
+    return f"""<div class="formwrap">
 <form id="nominate" method="post" action="https://app.kit.com/forms/9784201/subscriptions">
   <input type="hidden" name="fields[cin_source_site]" value="{S['domain']}">
   <label for="nom-name">Coach's full name *</label>
@@ -464,62 +381,162 @@ someone has given away — rather than a list of accolades. Tell us what they wr
     <option value="other">Other</option>
   </select>
 
-  <div class="consent">
-    <input type="checkbox" id="optin" name="tags[]" value="22363607">
-    <label for="optin">I'd also like to hear from {esc(S['curator'])} about executive coaching
-      research, tools and training. Optional — your nomination is considered either way.</label>
-  </div>
-
   <button type="submit">Submit nomination</button>
 </form>
-</div>
+</div>"""
 
-<h2>What happens to your nomination</h2>
-<ul class="caveats">
-<li>Every nomination is read and assessed against the published rubric at the next quarterly review.</li>
-<li>Nominations are retained for the current and next review cycle, then deleted.</li>
-<li>The nominee's details are used editorially. <strong>If you nominate someone else, they are not added
-to any mailing list</strong> — nobody can give marketing permission on another person's behalf. If they
-are listed, they receive one editorial email telling them so, which contains its own separate opt-in link
-should they want to hear more.</li>
-<li>Submitting creates a record of your nomination in our mailing system, so that we can reply to you about it. That is editorial correspondence, not marketing.</li>
-<li>The checkbox above is the only thing that governs marketing contact with <em>you</em>. It is unticked by default, and leaving it unticked has no effect whatever on how the nomination is assessed.</li>
-<li>You can withdraw at any time by writing to <a href="mailto:{S['contact']}">{S['contact']}</a>.</li>
-<li>Nominations are not published. Coaches who reach the list appear in the ranking or in Ones to Watch;
-those who do not are not named.</li>
-</ul>
-"""
+
+def inserts():
+    """Fixed parts of the pages that are the same on every site: the rubric
+    itself and the nomination form."""
+    rows = "".join('<tr><td class="w">%s</td><td><strong>%s</strong><br>%s</td></tr>' % r
+                   for r in ABOUT_ROWS)
+    return {
+        "weights": '<table><thead><tr><th>Weight</th><th>Criterion</th></tr></thead>'
+                   '<tbody>%s</tbody></table>' % rows,
+        "markers": '<ul class="caveats">%s</ul>' % "".join(
+            "<li><strong>%s.</strong> %s</li>" % m for m in MARKERS),
+        "generosity": '<ul class="caveats">%s</ul>' % "".join("<li>%s</li>" % g for g in GENEROSITY),
+        "form": nomination_form(),
+    }
+
+
+def blocks(spec):
+    """The page wording from data/edition.json, block by block."""
+    fixed = inserts()
+    out = ['<h1 class="page-title">%s</h1>' % fill(spec["h1"])]
+    for b in spec["blocks"]:
+        if "meta" in b:
+            out.append('<div class="meta">%s</div>' % fill(b["meta"]))
+        elif "h2" in b:
+            out.append("<h2>%s</h2>" % fill(b["h2"]))
+        elif "p" in b:
+            out.append("<p>%s</p>" % fill(b["p"]))
+        elif "small" in b:
+            out.append('<p class="small">%s</p>' % fill(b["small"]))
+        elif "ul" in b:
+            out.append('<ul class="caveats">%s</ul>' % "".join("<li>%s</li>" % fill(i) for i in b["ul"]))
+        elif "insert" in b:
+            out.append(fixed[b["insert"]])
+        else:
+            raise ValueError("unknown block in data/edition.json pages: %r" % b)
+    return "\n".join(out)
+
+
+def build_about():
+    spec = P["about"]
+    url = BASE + "/about.html"
+    headline = plain(fill(spec["h1"]))
+    article = {"@type": "Article", "@id": url + "#article", "url": url,
+               "mainEntityOfPage": url, "headline": headline, "inLanguage": "en",
+               "author": {"@id": CURATOR_ID}, "publisher": {"@id": CURATOR_ID},
+               "datePublished": S["published"], "dateModified": LASTMOD,
+               "isPartOf": {"@id": WEBSITE_ID}, "about": {"@id": WEBSITE_ID}}
+    return page("about", "Methodology — " + S["title"],
+                "The published rubric, weighting and verification standard behind the ranking.",
+                blocks(spec), [article, breadcrumb(headline, url)])
+
+
+def build_curator():
+    spec = P["curator"]
+    url = BASE + "/curator.html"
+    name = plain(fill(spec["h1"]))
+    about_page = {"@type": "AboutPage", "@id": url + "#webpage", "url": url, "name": name,
+                  "inLanguage": "en", "isPartOf": {"@id": WEBSITE_ID},
+                  "about": [{"@id": WEBSITE_ID}, {"@id": CURATOR_ID}],
+                  "author": {"@id": CURATOR_ID}, "publisher": {"@id": CURATOR_ID}}
+    return page("curator", "Curator — " + S["title"],
+                "Who owns and curates this ranking, and on what basis.",
+                blocks(spec), [about_page, breadcrumb(name, url)])
+
+
+def build_nominate():
+    spec = P["nominate"]
+    url = BASE + "/nominate.html"
+    name = plain(fill(spec["h1"]))
+    webpage = {"@type": "WebPage", "@id": url + "#webpage", "url": url, "name": name,
+               "inLanguage": "en", "isPartOf": {"@id": WEBSITE_ID},
+               "publisher": {"@id": CURATOR_ID}}
     return page("nominate", "Nominate a coach — " + S["title"],
-                "Nominate an executive coach for consideration in the next quarterly review.", body)
+                "Nominate an executive coach for consideration in the next quarterly review.",
+                blocks(spec), [webpage, breadcrumb(name, url)])
+
+
+def llms_txt():
+    """/llms.txt: what the site is, who is behind it, and its pages."""
+    coaches = sorted(DATA["coaches"], key=lambda x: x["rank"])
+    lines = [
+        "# " + S["title"],
+        "",
+        "> %s Edition %s, published %s. This site is reviewed quarterly; the next review is %s. "
+        "The ranking is curated and published by %s, who is not ranked on it. "
+        "No coach pays for placement or is charged for inclusion."
+        % (S["tagline"], S["edition"], S["published"], S["next_review"], S["curator"]),
+        "",
+        "## Pages",
+        "",
+        "- [%s](%s/): the ranking, %d coaches in rank order, with Ones to Watch, the coaches "
+        "considered and not included, and what is still to be verified."
+        % (S["title"], BASE, len(coaches)),
+        "- [%s](%s/about.html): the published rubric, its weights, the interlink adjustment and "
+        "the verification standard every entry is assessed against." % (plain(fill(P["about"]["h1"])), BASE),
+        "- [%s](%s/curator.html): who owns, curates and publishes the ranking, with full disclosure."
+        % (plain(fill(P["curator"]["h1"])), BASE),
+        "- [%s](%s/nominate.html): how to nominate a coach for the next quarterly review; "
+        "no payment is involved at any stage." % (plain(fill(P["nominate"]["h1"])), BASE),
+        "",
+        "## Ranked coaches",
+        "",
+    ]
+    for c in coaches:
+        lines.append("- [%s](%s/coaches/%s.html): ranked #%d. %s."
+                     % (plain(c["name"]), BASE, c["slug"], c["rank"], plain(c["role"])))
+    return "\n".join(lines) + "\n"
 
 
 def main():
     os.makedirs(os.path.join(OUT, "coaches"), exist_ok=True)
-    w = lambda p, c: open(os.path.join(OUT, p), "w", encoding="utf-8").write(c)
 
-    w("index.html", build_index())
-    w("about.html", build_about())
-    w("curator.html", build_curator())
-    w("nominate.html", build_nominate())
+    def w(p, c):
+        with open(os.path.join(OUT, p), "w", encoding="utf-8", newline="\n") as f:
+            f.write(c)
+
+    pages = [("index.html", BASE + "/", build_index()),
+             ("about.html", BASE + "/about.html", build_about()),
+             ("curator.html", BASE + "/curator.html", build_curator()),
+             ("nominate.html", BASE + "/nominate.html", build_nominate())]
     for c in DATA["coaches"]:
-        w(os.path.join("coaches", c["slug"] + ".html"), build_coach(c))
+        pages.append(("coaches/" + c["slug"] + ".html",
+                      BASE + "/coaches/" + c["slug"] + ".html", build_coach(c)))
+
+    # Sitemap dates: a page keeps the date it last changed. data/lastmod.json
+    # holds each page's content hash and date; a page whose hash has changed
+    # since that file was written gets today's date.
+    manifest = os.path.join(ROOT, "data", "lastmod.json")
+    known = json.load(open(manifest, encoding="utf-8")) if os.path.exists(manifest) else {}
+    today = datetime.date.today().isoformat()
+    dates = {}
+    sm = ['<?xml version="1.0" encoding="UTF-8"?>',
+          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for path, url, content in pages:
+        digest = hashlib.sha256(content.encode("utf-8")).hexdigest()
+        was = known.get(path) or {}
+        date = was["lastmod"] if was.get("sha256") == digest and was.get("lastmod") else today
+        dates[path] = {"sha256": digest, "lastmod": date}
+        w(path, content.replace(LASTMOD, date))
+        sm.append("<url><loc>%s</loc><lastmod>%s</lastmod></url>" % (url, date))
+    sm.append("</urlset>")
+    w("sitemap.xml", "\n".join(sm))
+    with open(manifest, "w", encoding="utf-8", newline="\n") as f:
+        f.write(json.dumps(dates, indent=2, sort_keys=True) + "\n")
 
     shutil.copy(os.path.join(ROOT, "static", "style.css"), os.path.join(OUT, "style.css"))
     w("CNAME", S["domain"] + "\n")
     w(".nojekyll", "")
     w("robots.txt", "User-agent: *\nAllow: /\n\nSitemap: %s/sitemap.xml\n" % BASE)
+    w("llms.txt", llms_txt())
 
-    urls = [BASE + "/", BASE + "/about.html", BASE + "/curator.html", BASE + "/nominate.html"]
-    urls += [BASE + "/coaches/" + c["slug"] + ".html" for c in DATA["coaches"]]
-    today = datetime.date.today().isoformat()
-    sm = ['<?xml version="1.0" encoding="UTF-8"?>',
-          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    for u in urls:
-        sm.append("<url><loc>%s</loc><lastmod>%s</lastmod></url>" % (u, today))
-    sm.append("</urlset>")
-    w("sitemap.xml", "\n".join(sm))
-
-    print("built %d pages into %s" % (4 + len(DATA["coaches"]), OUT))
+    print("built %d pages and llms.txt into %s" % (len(pages), OUT))
 
 
 if __name__ == "__main__":
