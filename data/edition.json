@@ -201,8 +201,14 @@
       "location": "Durham, North Carolina, USA",
       "role": "Executive Director, Coach K Center on Leadership &amp; Ethics, Duke University Fuqua School of Business; Professor, Duke Pratt School of Engineering",
       "links": [
-        {"label": "LinkedIn", "url": "https://www.linkedin.com/in/sanyin/"},
-        {"label": "Thinkers50 biography", "url": "https://thinkers50.com/biographies/sanyin-siang/"}
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/sanyin/"
+        },
+        {
+          "label": "Thinkers50 biography",
+          "url": "https://thinkers50.com/biographies/sanyin-siang/"
+        }
       ],
       "bio": "Executive Director of the Coach K Center on Leadership &amp; Ethics at Duke University's Fuqua School of Business and a professor in Duke's Pratt School of Engineering. She coaches boards and CEOs, and previously worked at the American Association for the Advancement of Science.",
       "assessment": [
@@ -222,8 +228,14 @@
       "location": "United States",
       "role": "Founder, Institute of Coaching, Harvard Medical School; Senior Leadership Advisor, Egon Zehnder",
       "links": [
-        {"label": "carolkauffman.com", "url": "https://carolkauffman.com/"},
-        {"label": "LinkedIn", "url": "https://www.linkedin.com/in/carolkauffmanphd/"}
+        {
+          "label": "carolkauffman.com",
+          "url": "https://carolkauffman.com/"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/carolkauffmanphd/"
+        }
       ],
       "bio": "Founder of the Institute of Coaching at Harvard Medical School, established in 2009 on a $2m grant, and founding Editor-in-Chief of <em>Coaching: An International Journal of Theory, Research and Practice</em>. She launched the Coaching in Leadership &amp; Healthcare Conference and the IOC Leadership Forum, and supervises an international group of leadership coaches. Visiting Professor at Henley Business School and Senior Leadership Advisor at Egon Zehnder.",
       "assessment": [
@@ -243,8 +255,14 @@
       "location": "Chatham, New York, USA",
       "role": "Executive coach, author and speaker on women's leadership",
       "links": [
-        {"label": "sallyhelgesen.com", "url": "https://sallyhelgesen.com/"},
-        {"label": "Thinkers50 Hall of Fame", "url": "https://thinkers50.com/hall-of-fame/"}
+        {
+          "label": "sallyhelgesen.com",
+          "url": "https://sallyhelgesen.com/"
+        },
+        {
+          "label": "Thinkers50 Hall of Fame",
+          "url": "https://thinkers50.com/hall-of-fame/"
+        }
       ],
       "bio": "Executive coach, speaker and author whose work on women's leadership spans four decades. Inducted into the Thinkers50 Hall of Fame in 2022 and awarded the Institute for Management Studies Lifetime Achievement Award in 2023.",
       "assessment": [
@@ -263,9 +281,18 @@
       "location": "Arizona, USA",
       "role": "President, Covisioning LLC; fifth global President of the International Coaching Federation",
       "links": [
-        {"label": "covisioning.com", "url": "https://covisioning.com/"},
-        {"label": "LinkedIn", "url": "https://www.linkedin.com/in/marciareynolds/"},
-        {"label": "ICF profile", "url": "https://coachingfederation.org/person/marcia-reynolds/"}
+        {
+          "label": "covisioning.com",
+          "url": "https://covisioning.com/"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/marciareynolds/"
+        },
+        {
+          "label": "ICF profile",
+          "url": "https://coachingfederation.org/person/marcia-reynolds/"
+        }
       ],
       "bio": "President of Covisioning LLC and a behavioural scientist who served as the fifth global president of the International Coaching Federation. She teaches on the faculty of coaching schools in several countries and works on reflective-inquiry coaching methodology.",
       "assessment": [
@@ -285,8 +312,14 @@
       "location": "South Croydon, England, UK",
       "role": "Executive and board-level coach; Chair of the ICF Global Board of Directors, 2018",
       "links": [
-        {"label": "ICF profile", "url": "https://coachingfederation.org/person/tracy-sinclair-mcc-united-kingdom/"},
-        {"label": "ICF award winners", "url": "https://coachingfederation.org/about/awards/past-icf-award-winners/"}
+        {
+          "label": "ICF profile",
+          "url": "https://coachingfederation.org/person/tracy-sinclair-mcc-united-kingdom/"
+        },
+        {
+          "label": "ICF award winners",
+          "url": "https://coachingfederation.org/about/awards/past-icf-award-winners/"
+        }
       ],
       "bio": "Executive and board-level coach, coach trainer and supervisor. She chaired the International Coaching Federation's Global Board of Directors in 2018 and holds the ICF Master Certified Coach credential.",
       "assessment": [
@@ -305,8 +338,14 @@
       "location": "France",
       "role": "Co-founder and CEO, Cultivating Leadership; author of five books with Stanford University Press",
       "links": [
-        {"label": "cultivatingleadership.com", "url": "https://www.cultivatingleadership.com/"},
-        {"label": "Thinkers50 Coaches50", "url": "https://thinkers50.com/coaches50/"}
+        {
+          "label": "cultivatingleadership.com",
+          "url": "https://www.cultivatingleadership.com/"
+        },
+        {
+          "label": "Thinkers50 Coaches50",
+          "url": "https://thinkers50.com/coaches50/"
+        }
       ],
       "bio": "Co-founder and CEO of Cultivating Leadership, working with senior leaders on complexity, adult development and decision-making under uncertainty. Author of five books published by Stanford University Press.",
       "assessment": [
@@ -325,8 +364,14 @@
       "location": "Washington State, USA",
       "role": "CEO, inviteCHANGE; global President of the International Coaching Federation, 2012",
       "links": [
-        {"label": "invitechange.com", "url": "https://www.invitechange.com/"},
-        {"label": "ICF", "url": "https://coachingfederation.org/"}
+        {
+          "label": "invitechange.com",
+          "url": "https://www.invitechange.com/"
+        },
+        {
+          "label": "ICF",
+          "url": "https://coachingfederation.org/"
+        }
       ],
       "bio": "CEO of inviteCHANGE, an accredited coach-training organisation, and a Master Certified Coach. She served as global President of the International Coaching Federation in 2012 and has chaired the ICF Foundation Board. Author of two books.",
       "assessment": [
@@ -345,9 +390,18 @@
       "location": "Lusaka, Zambia",
       "role": "Founder and CEO, ZANGA African Metrics; executive coach and change practitioner",
       "links": [
-        {"label": "zangametrics.com", "url": "https://www.zangametrics.com/"},
-        {"label": "LinkedIn", "url": "https://www.linkedin.com/in/nankhondevandenbroek/"},
-        {"label": "Thinkers50 award 2021", "url": "https://thinkers50.com/awards-2021/"}
+        {
+          "label": "zangametrics.com",
+          "url": "https://www.zangametrics.com/"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/nankhondevandenbroek/"
+        },
+        {
+          "label": "Thinkers50 award 2021",
+          "url": "https://thinkers50.com/awards-2021/"
+        }
       ],
       "bio": "Executive coach, entrepreneur and change-management practitioner. Founder and CEO of ZANGA African Metrics, which builds psychometric leadership assessments designed for African and other high-context emerging markets. She sits on the global board of Management Sciences for Health.",
       "assessment": [
@@ -367,7 +421,10 @@
       "location": "Toronto, Canada",
       "role": "Executive coach and communication scientist; founder, Canadian Centre for Brief Coaching",
       "links": [
-        {"label": "Thinkers50 Coaches50", "url": "https://thinkers50.com/coaches50/"}
+        {
+          "label": "Thinkers50 Coaches50",
+          "url": "https://thinkers50.com/coaches50/"
+        }
       ],
       "bio": "Communication scientist and executive coach based in Toronto, founder of the Canadian Centre for Brief Coaching and originator of the Dialogic Orientation Quadrant. Her research examines how coaching conversations actually work at the level of language.",
       "assessment": [
@@ -387,8 +444,14 @@
       "location": "New York, USA",
       "role": "Executive coach to founders and C-suite leaders; executive coach, Cornell's NYC tech incubator",
       "links": [
-        {"label": "alisacohn.com", "url": "https://www.alisacohn.com/"},
-        {"label": "LinkedIn", "url": "https://www.linkedin.com/in/alisacohn"}
+        {
+          "label": "alisacohn.com",
+          "url": "https://www.alisacohn.com/"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/alisacohn"
+        }
       ],
       "bio": "Executive coach working with C-suite executives at startups and Fortune 500 companies, and executive coach for Cornell's New York City tech incubator. Thinkers50 records that she has coached political and social leaders including the first female minister of Afghanistan, the former Chief Justice of the Supreme Court of Sri Lanka, and Ukraine's Minister of Digital Transformation. She has guest lectured at Harvard, Cornell, the Naval War College and Henley Business School.",
       "assessment": [
